@@ -1,11 +1,12 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'vagrant/faster/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "vagrant-faster"
-  spec.version       = Vagrant::Faster::VERSION
+  spec.version       = "0.0.3"
+  spec.version       = "#{spec.version}.pre-#{ENV['TRAVIS_BUILD_NUMBER']}" if ENV['TRAVIS']
+
   spec.authors       = ["rdsubhas"]
   spec.email         = ["rdsubhas@gmail.com"]
   spec.description   = %q{A Vagrant Plugin that makes your VirtualBox VMs faster by allocating more Memory/CPU based on your machine capacity}

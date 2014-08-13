@@ -1,7 +1,6 @@
-require "vagrant/faster/version"
+require 'vagrant/faster/plugin'
 
 module Vagrant
   module Faster
-    # Your code goes here...
   end
 end
