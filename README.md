@@ -1,29 +1,26 @@
 # Vagrant::Faster
 
-TODO: Write a gem description
+Tired of Vagrant VMs running slow? This plugin automatically allocates more Memory/CPU based on your machine's capacity.
 
-## Installation
+To install:
 
-Add this line to your application's Gemfile:
+    vagrant plugin install vagrant-faster
 
-    gem 'vagrant-faster'
+And that's it. All VMs started from now will be made faster.
 
-And then execute:
+## How much does it allocate?
 
-    $ bundle
+* 1/4th of memory, if you have more than 2GB RAM
+* 1/2 of the available CPU cores, if you have more than 1 CPU.
+* For machines with less than 2GB RAM or single-CPU, it will simply leave the machine defaults as it is
 
-Or install it yourself as:
+**NOTE**: These were rudimentary values I picked based on usage. Please feel free to suggest better.
 
-    $ gem install vagrant-faster
+## Known Issues
 
-## Usage
+* Presently supports only VirtualBox
+* No option to disable this for specific VMs for now.
 
-TODO: Write usage instructions here
+Please open an issue if you feel any of this are nagging you.
 
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/vagrant-faster/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+**Contributions Welcome**
