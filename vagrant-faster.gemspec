@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 Gem::Specification.new do |spec|
   spec.name          = "vagrant-faster"
   spec.version       = "0.0.3"
-  spec.version       = "#{spec.version}.pre-#{ENV['TRAVIS_BUILD_NUMBER']}" if ENV['TRAVIS']
+  spec.version       = "#{spec.version}-alpha-#{ENV['TRAVIS_BUILD_NUMBER']}" if ENV['TRAVIS']
 
   spec.authors       = ["rdsubhas"]
   spec.email         = ["rdsubhas@gmail.com"]
