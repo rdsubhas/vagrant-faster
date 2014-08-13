@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["rdsubhas@gmail.com"]
   spec.description   = %q{A Vagrant Plugin that makes your VirtualBox VMs faster by allocating more Memory/CPU based on your machine capacity}
   spec.summary       = spec.description
-  spec.homepage      = ""
+  spec.homepage      = "http://github.com/rdsubhas/vagrant-faster"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
