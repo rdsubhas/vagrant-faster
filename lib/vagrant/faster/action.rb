@@ -1,23 +1,23 @@
 module Vagrant
   module Faster
-    class Middleware
+    class Action
       def initialize(app, env)
         @app = app
-        @env = env
       end
 
       def call(env)
-        @env = env
-        vm   = env[:vm] || env[:machine]
+        vm = env[:vm] || env[:machine]
 
         cpus, mem = optimal_settings
         if cpus > 0 && mem > 0
-          puts "[vagrant-faster] Setting CPUs: #{cpus} and Memory: #{mem}"
-          vm.cpus = cpus
-          vm.memory = memory
+          env[:ui].warn "[vagrant-faster] Setting CPUs: #{cpus}, Memory: #{mem}"
+          vm.provider_config.customizations << ["pre-boot", ["modifyvm", :id, "--memory", mem]]
+          vm.provider_config.customizations << ["pre-boot", ["modifyvm", :id, "--cpus", cpus]]
         else
-          puts "[vagrant-faster] was unable to detect optimal settings for your machine"
+          env[:ui].warn "[vagrant-faster] was unable to detect optimal settings for your machine"
         end
+
+        @app.call env
       end
 
       def optimal_settings
@@ -40,7 +40,7 @@ module Vagrant
           mem  = mem / 4  if mem > 2048
         rescue; end
 
-        cpus, mem
+        [ cpus, mem ]
       end
     end
   end
