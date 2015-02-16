@@ -33,6 +33,9 @@ module Vagrant
           elsif host =~ /linux/
             cpus = `nproc`.to_i
             mem = `grep 'MemTotal' /proc/meminfo | sed -e 's/MemTotal://' -e 's/ kB//'`.to_i / 1024
+          elsif host =~ /mswin|mingw|cygwin/
+            cpus = `wmic cpu Get NumberOfCores`.split[1].to_i
+            mem = `wmic computersystem Get TotalPhysicalMemory`.split[1].to_i / 1024 / 1024
           end
 
           # Give VM 1/4 system memory & access to half of cpu cores on the host
