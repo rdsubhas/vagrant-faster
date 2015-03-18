@@ -1,0 +1,38 @@
+---
+- hosts: all
+  gather_facts: yes
+  sudo: yes
+
+  tasks:
+    - name: Add Ruby repository
+      apt_repository: repo='ppa:brightbox/ruby-ng'
+
+    - name: Install packages
+      apt: name={{ item }} state=present
+      with_items:
+        - build-essential
+        - git
+        - libxml2-dev
+        - libxslt1-dev
+        - zlib1g-dev
+        - ruby2.2
+        - ruby2.2-dev
+        - ruby-switch
+        - curl
+        - wget
+
+    - name: Dont install gem docs
+      lineinfile: "dest=/etc/gemrc line='gem: --no-ri --no-rdoc' create=yes"
+
+    - name: Check bundler
+      shell: bundle -v
+      register: bundler_present
+      ignore_errors: True
+
+    - name: Install bundler
+      shell: gem install bundler -v '~> 1.7.0'
+      when: bundler_present|failed
+
+    - name: Install gems
+      shell: bundle install -j4 chdir=/vagrant
+      sudo_user: vagrant
