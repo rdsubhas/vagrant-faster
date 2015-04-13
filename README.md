@@ -1,6 +1,6 @@
 # Vagrant::Faster
 
-[![Gem Version](https://badge.fury.io/rb/vagrant-faster.svg)](http://badge.fury.io/rb/vagrant-faster)
+[![Gem Version](https://badge.fury.io/rb/vagrant-faster.svg)](https://badge.fury.io/rb/vagrant-faster)
 [![Build Status](https://travis-ci.org/rdsubhas/vagrant-faster.svg?branch=master)](https://travis-ci.org/rdsubhas/vagrant-faster)
 
 Tired of Vagrant VMs running slow? This plugin automatically allocates more Memory/CPU based on your machine's capacity.
