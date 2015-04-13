@@ -1,9 +1,12 @@
 ---
 language: ruby
 sudo: false
+cache: bundler
 deploy:
   provider: rubygems
   api_key:
     secure: bb8ndwqNOqoDJg7oTipEBYpmF9Eg7A7eb5KhP8aG+J1qaaMv+xDksJ4J5ldTZUxsFBeVC9RIAiTHuK7gRElL7bwnRtQzLfDYLSuby2MzNLCu90QKN8ovmcvnytCyRyvL7GiSw0Uc0Q5o/ve040/i6YccUTxw12TJMcWaSHZA95o=
   on:
     tags: true
+notifications:
+  email: false
